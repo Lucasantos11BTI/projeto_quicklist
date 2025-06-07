@@ -16,7 +16,7 @@ function addItem() {
 }
 
 function showItemsList() {
-    const sectionList = document.querySelectorSelector(".list")
+    const sectionList = document.querySelector(".list")
     sectionList.textContent = ""
 
     items.map((item, index) =>{
