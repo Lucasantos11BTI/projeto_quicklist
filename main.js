@@ -36,7 +36,7 @@ function showItemsList() {
                     <label for="item-${index}" onclick="checkItem(${index})">${item.name}</label>
                 </div>
 
-                <button onclick ="removeItem('${item.name}')">
+                <button onclick ="removeItem(${index})">
                     <img src="./assets-20250607T001251Z-1-001/assets/trash-icon.svg" alt="trash icon">
                 </button>
             </div>
@@ -46,8 +46,8 @@ function showItemsList() {
     localStorage.setItem("items", JSON.stringify(items))
 }
 
-function removeItem (itemName) {
-    const itemIndex = items.findIndex((item) => item.name === itemName)
+function removeItem (index) {
+    
     const divWarning = document.querySelector(".warning")
 
     divWarning.classList.remove("hide-warning")
@@ -56,10 +56,7 @@ function removeItem (itemName) {
         divWarning.classList.add("hide-warning")
     }, 4000)
 
-
-    if (itemIndex !== -1) {
-        items.splice(itemIndex, 1)
-    }
+        items.splice(index, 1)
 
     showItemsList()
 }
@@ -72,7 +69,7 @@ function checkItem(itemName) {
 }
 
 function addHideWarningClass () {
-    document.querySelector(".warning").classList.add("hide-warning'")
+    document.querySelector(".warning").classList.add("hide-warning")
 }
 
 function verifyLocalStorageItems() {
