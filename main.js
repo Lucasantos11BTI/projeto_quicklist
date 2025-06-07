@@ -68,3 +68,7 @@ function checkItem(itemName) {
     item.checked = !item.checked
     showItemsList()
 }
+
+function addHideWarningClass () {
+    document.querySelector(".warning").classList.add("hide-warning'")
+}
