@@ -1,11 +1,10 @@
 const items = []
-
 function addItem() {
     const itemName = document.querySelector("#item").value
 
     const item = {
         name: itemName,
-        checked: true
+        checked: false
     }
 
     items.push(item)
@@ -27,7 +26,7 @@ function showItemsList() {
                     <div class="custom-checkbox">
                         <img src="./assets-20250607T001251Z-1-001/assets/checked.svg" alt="checked">
                     </div>
-                    <label for="item-${index}">${item.name}</label>
+                    <label for="item-${index}" onclick "checkItem('${item.name}')>${item.name}</label>
                 </div>
 
                 <button onclick ="removeItem('${item.name}')">
@@ -48,9 +47,21 @@ function removeItem (itemName) {
         divWarning.classList.add("hide-warning")
     }, 4000)
 
-    
+
     if (itemIndex !== -1) {
         items.splice(itemIndex, 1)
+    }
+
+    showItemsList()
+}
+
+function checkItem(itemName) {
+    const item = items.find((item) => item.name === itemName)
+
+    if(item.checked === true) {
+        item.checked = false
+    } else {
+        item.checked = true
     }
 
     showItemsList()
